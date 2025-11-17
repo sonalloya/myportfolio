@@ -1,0 +1,234 @@
+/* ------------------ CLEAN DEVELOPER THEME ------------------ */
+:root {
+  --bg: #0f1115;
+  --bg-secondary: #171a20;
+  --text: #e8ecf2;
+  --text-muted: #a3a7b1;
+  --accent: #4ea6f7;           /* Soft tech blue */
+  --accent-dark: #3d82c2;
+  --card: #1b1f27;
+  --border: #2a2f38;
+  --shadow: 0 4px 16px rgba(0,0,0,0.3);
+  --radius: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body, html {
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+/* ------------------ NAVBAR ------------------ */
+.navbar {
+  width: 100%;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.navbar h2 {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.nav-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.theme-btn,
+.resume-btn {
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.25s;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.theme-btn:hover,
+.resume-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ------------------ HERO SECTION ------------------ */
+.hero {
+  text-align: center;
+  padding: 90px 20px;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* ------------------ SECTIONS ------------------ */
+.section {
+  padding: 60px 20px;
+  max-width: 950px;
+  margin: auto;
+}
+
+.section h2 {
+  font-size: 1.9rem;
+  margin-bottom: 20px;
+}
+
+/* ------------------ SKILLS ------------------ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
+}
+
+.skill-card {
+  background: var(--card);
+  padding: 16px;
+  border-radius: var(--radius);
+  text-align: center;
+  border: 1px solid var(--border);
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: 0.25s;
+}
+
+.skill-card:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* ------------------ PROJECTS ------------------ */
+.project-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.project-card {
+  padding: 22px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: 0.25s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card h3 {
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+  color: var(--accent);
+}
+
+.project-card p {
+  margin-bottom: 14px;
+  color: var(--text-muted);
+}
+
+.project-link {
+  text-decoration: none;
+  padding: 9px 12px;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.25s;
+}
+
+.project-link:hover {
+  background: var(--accent-dark);
+}
+
+/* ------------------ CONTACT FORM ------------------ */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text);
+  resize: none;
+  transition: 0.25s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.contact-form button {
+  width: fit-content;
+  padding: 12px 22px;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.25s;
+  font-weight: 600;
+}
+
+.contact-form button:hover {
+  background: var(--accent-dark);
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .project-grid {
+    gap: 16px;
+  }
+}
