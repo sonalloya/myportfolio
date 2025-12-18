@@ -1,16 +1,11 @@
-// Full Professional Student Portfolio Template
-// Includes:
-// 1. Navigation Bar
-// 2. Dark/Light Theme Toggle
-// 3. Resume PDF Download Button
-// 4. Section Animations
-// 5. Profile Photo Layout
-// 6. GitHub-Style Project Cards
-
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-export default function App() {
+// Theme context to manage the theme state
+const ThemeContext = React.createContext();
+
+// Theme provider to wrap the application
+const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
@@ -22,25 +17,39 @@ export default function App() {
   };
 
   return (
-    <div className="app">
-      <Navbar toggleTheme={toggleTheme} theme={theme} />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-    </div>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+// App component
+export default function App() {
+  return (
+    <ThemeProvider>
+      <div className="app">
+        <Navbar />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </div>
+    </ThemeProvider>
   );
 }
 
 // -------------------- NAVBAR --------------------
-function Navbar({ toggleTheme, theme }) {
+
+function Navbar() {
+  const { theme, toggleTheme } = React.useContext(ThemeContext);
+
   return (
     <nav className="navbar">
       <h2>MyPortfolio</h2>
       <div className="nav-right">
         <button onClick={toggleTheme} className="theme-btn">
-          {theme === "light" ? "🌙 Dark" : "☀ Light"}
+          {theme === "light" ? "\u2605 Dark" : "\u2600 Light"}
         </button>
         <a href="/Sonal_Resume.pdf" download className="resume-btn">Download Resume</a>
       </div>
@@ -49,6 +58,7 @@ function Navbar({ toggleTheme, theme }) {
 }
 
 // -------------------- HERO --------------------
+
 function Hero() {
   return (
     <motion.section className="hero" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -60,6 +70,7 @@ function Hero() {
 }
 
 // -------------------- ABOUT --------------------
+
 function About() {
   return (
     <motion.section className="section" initial={{ y: 40, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }}>
@@ -70,6 +81,7 @@ function About() {
 }
 
 // -------------------- SKILLS --------------------
+
 function Skills() {
   const skills = ["Python", "JavaScript", "React", "Django", "HTML", "SQL", "CSS","Numpy", "Pandas"];
   return (
@@ -83,6 +95,7 @@ function Skills() {
 }
 
 // -------------------- PROJECTS --------------------
+
 function Projects() {
   const projects = [
     { title: "Portfolio Website", desc: "React + Django", link: "#" },
@@ -106,6 +119,7 @@ function Projects() {
 }
 
 // -------------------- CONTACT --------------------
+
 function Contact() {
   return (
     <motion.section className="section" initial={{ y: 40, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }}>
