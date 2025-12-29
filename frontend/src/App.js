@@ -1,12 +1,3 @@
-// Full Professional Student Portfolio Template
-// Includes:
-// 1. Navigation Bar
-// 2. Dark/Light Theme Toggle
-// 3. Resume PDF Download Button
-// 4. Section Animations
-// 5. Profile Photo Layout
-// 6. GitHub-Style Project Cards
-
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -17,18 +8,28 @@ export default function App() {
     document.documentElement.className = theme;
   }, [theme]);
 
-  const toggleTheme = () => {
+  const handleThemeToggle = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  return (
-    <div className="app">
-      <Navbar toggleTheme={toggleTheme} theme={theme} />
+  const renderNavbar = () => (
+    <Navbar toggleTheme={handleThemeToggle} theme={theme} />
+  );
+
+  const renderMainContent = () => (
+    <>
       <Hero />
       <About />
       <Skills />
       <Projects />
       <Contact />
+    </>
+  );
+
+  return (
+    <div className="app">
+      {renderNavbar()}
+      {renderMainContent()}
     </div>
   );
 }
@@ -40,7 +41,7 @@ function Navbar({ toggleTheme, theme }) {
       <h2>MyPortfolio</h2>
       <div className="nav-right">
         <button onClick={toggleTheme} className="theme-btn">
-          {theme === "light" ? "🌙 Dark" : "☀ Light"}
+          {theme === "light" ? "\u2605 Dark" : "\u2600 Light"}
         </button>
         <a href="/Sonal_Resume.pdf" download className="resume-btn">Download Resume</a>
       </div>
