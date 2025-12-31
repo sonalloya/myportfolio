@@ -2,9 +2,11 @@
 
 from django.db import migrations, models
 
-
 class Migration(migrations.Migration):
-
+    """
+    This is the initial migration for the contact app.
+    It creates the Message model with fields for name, email, message, and created_at.
+    """
     initial = True
 
     dependencies = [
